@@ -1,0 +1,16 @@
+bin
+target
+.svn
+esbsg.log
+log
+*.iml
+.idea
+logs
+.classpath
+.project
+.settings
+.DS_Store
+*.bpmn/
+/userguide/src/en/index.html
+jar
+LOG_PATH_IS_UNDEFINED

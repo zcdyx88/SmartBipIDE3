@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="cmd" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="debug" />
+		<param name="Encoding" value="GBK" />
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d  %-5p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+
+
+	<appender name="all" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="./log/SmartBranchIDE.log" />
+		<param name="Encoding" value="GBK" />
+		<param name="Threshold" value="debug" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="5000kb" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t]  [%-5p]   (%c.%M:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="com.dc.branch.ide" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="all" />
+	</logger>
+	
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="all" />
+		<appender-ref ref="cmd" />
+	</root>
+</log4j:configuration>  

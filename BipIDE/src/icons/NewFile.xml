@@ -1,0 +1,52 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://esb.spdbbiz.com/services/30011000001" xmlns:met="http://esb.spdbbiz.com/metadata">
+   <soapenv:Header>
+      <ns:ReqSysHead>
+         <met:ReqSeq>speluncis abdidit</met:ReqSeq>
+         <met:ServiceID>anyType</met:ServiceID>
+         <met:ChannelID>anyType</met:ChannelID>
+         <met:LegOrgID>anyType</met:LegOrgID>
+         <met:ReqDate>anyType</met:ReqDate>
+         <met:ReqTime>anyType</met:ReqTime>
+         <met:MAC>bella gero et</met:MAC>
+         <met:Version>anyType</met:Version>
+         <met:Priority>anyType</met:Priority>
+         <met:ReqSysID>flammas turbine</met:ReqSysID>
+         <met:DomainRef>anyType</met:DomainRef>
+         <met:AcceptLang>anyType</met:AcceptLang>
+         <met:GlobalSeq>anyType</met:GlobalSeq>
+         <met:OrgSysID>hoc metuens</met:OrgSysID>
+         <met:RespSeq>ac vinclis</met:RespSeq>
+         <met:RespDate>speluncis abdidit</met:RespDate>
+         <met:RespTime>aris imponet honorem</met:RespTime>
+         <met:TransStatus>anyType</met:TransStatus>
+         <met:RetCode>praeterea aut</met:RetCode>
+         <met:RetMsg>claustra fremunt</met:RetMsg>
+         <met:RespSysID>imperio premit</met:RespSysID>
+         <met:TrackCode>anyType</met:TrackCode>
+         <met:ReseFlg>anyType</met:ReseFlg>
+         <met:ReseFld>anyType</met:ReseFld>
+         <met:SvcScn>quisquam numen</met:SvcScn>
+         <met:TmlCd>ac vinclis</met:TmlCd>
+      </ns:ReqSysHead>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:ReqOp01>
+         <ns:ReqAppHead>
+            <ns:TlrNo>gero et</ns:TlrNo>
+            <ns:BrId>sonoras imperio</ns:BrId>
+         </ns:ReqAppHead>
+         <ns:AppBody>
+            <ns:SrlNo>quae divum incedo</ns:SrlNo>
+            <ns:CshTrfFlg>verrantque per auras</ns:CshTrfFlg>
+            <ns:AcctTp>per auras</ns:AcctTp>
+            <ns:TxnAmt>1.30</ns:TxnAmt>
+            <ns:SeqNo>circum claustra</ns:SeqNo>
+            <ns:BigAmtFlg>nimborum in</ns:BigAmtFlg>
+            <ns:Ccy>foedere certo</ns:Ccy>
+            <ns:ChkFlg>profundum quippe ferant</ns:ChkFlg>
+            <ns:ChrgFlg>et carcere</ns:ChrgFlg>
+            <ns:CardNo>iovis rapidum iaculata</ns:CardNo>
+         </ns:AppBody>
+      </ns:ReqOp01>
+   </soapenv:Body>
+</soapenv:Envelope>

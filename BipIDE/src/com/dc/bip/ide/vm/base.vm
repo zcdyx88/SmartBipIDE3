@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<id>$service.name</id>
+	<nickName>$!service.nickName</nickName>
+	<type>$service.objectType</type>
+	<location>$service.location</location>
+	<category>$service.category</category>	
+	<lastModified>$!service.lastModified</lastModified>
+	<description><![CDATA[$!service.description]]></description>
+	<impl>$service.impls</impl>
+	<contribution>$!service.contributionId</contribution>
+	#if($!service.paramConfig)
+	<parameters>
+		#if($!service.paramConfig.extendParamServiceId)
+		<extendsparameter serviceid="$service.paramConfig.extendParamServiceId"/>
+		#end
+		<selfparameter>
+			#foreach($sParam in $service.paramConfig.selfParamConifgList)
+			<parameter name="$sParam.parameterName"  value="$sParam.parameterValue" remark="$sParam.parameterRemark"/>
+			#end
+		</selfparameter>
+		</parameters>
+	#end
+</root>
