@@ -266,7 +266,8 @@ public class FlowConvertAction implements IObjectActionDelegate {
 					if (null == runnableElement) {
 						runnableElement = barrierElement.addElement("runnable");
 						runnableElement.addAttribute("id", laneSetPair[0] + laneSetPair[1]);
-						runnableElement.addAttribute("countDown", laneSetPair[0]);
+						runnableElement.addAttribute("countDown", "");
+						runnableElement.addAttribute("timeout", "");
 						runnableElementMap.put(laneSetPair[0] + laneSetPair[1], runnableElement);
 					}
 					xmlParent = runnableElement;
