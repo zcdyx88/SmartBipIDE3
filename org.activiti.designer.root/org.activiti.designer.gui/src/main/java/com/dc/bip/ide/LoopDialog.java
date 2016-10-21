@@ -22,6 +22,7 @@ import org.eclipse.swt.events.ModifyEvent;
 public class LoopDialog extends Dialog {
 	private Text nameText;
 	private Text loopConditionText;
+	private Text loopConditionTextkey;
 	private Combo loopTypeCombo;
 	private EventSubProcess esp;
 	private Shell shell_1;
@@ -43,7 +44,7 @@ public class LoopDialog extends Dialog {
 		shell_1 = new Shell(getParent(), getStyle());
 		shell_1.setText("编辑循环");
 		shell_1.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
-		shell_1.setSize(511, 181);
+		shell_1.setSize(511, 205);
 		Point location = getParent().getShell().getLocation();
 		Point size = getParent().getShell().getSize();
 		shell_1.setLocation((location.x + size.x - 500) / 2, (location.y + size.y - 300) / 2);
@@ -66,6 +67,7 @@ public class LoopDialog extends Dialog {
 				esp.setName(nameText.getText());
 				FlowElementUtil.saveAttr(esp, "loopType", loopTypeCombo.getText());
 				FlowElementUtil.saveAttr(esp, "loopCondition", loopConditionText.getText());
+				FlowElementUtil.saveAttr(esp, "loopConditionkey", loopConditionTextkey.getText());
 				FlowElementUtil.saveAttr(esp, "type", "operation");
 				shell_1.close();
 			}
@@ -133,7 +135,7 @@ public class LoopDialog extends Dialog {
 
 		Label loopConditionLabel = new Label(shell, SWT.NONE);
 		loopConditionLabel.setAlignment(SWT.CENTER);
-		loopConditionLabel.setText("循环条件");
+		loopConditionLabel.setText("循环条件(set)");
 		loopConditionLabel.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
 
 		loopConditionText = new Text(shell, SWT.BORDER);
@@ -145,6 +147,23 @@ public class LoopDialog extends Dialog {
 		if (StringUtils.isNotEmpty(loopCondition)) {
 			loopConditionText.setText(loopCondition);
 		}
+		
+		//新增循环key值
+		Label loopConditionLabel_key = new Label(shell, SWT.NONE);
+		loopConditionLabel_key.setAlignment(SWT.CENTER);
+		loopConditionLabel_key.setText("循环变量(key)");
+		loopConditionLabel_key.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
+		loopConditionTextkey = new Text(shell, SWT.BORDER);
+		
+		GridData gd_loopConditionText_key = new GridData(GridData.FILL_HORIZONTAL);
+		gd_loopConditionText_key.widthHint = 200;
+		loopConditionTextkey.setLayoutData(gd_loopConditionText_key);
+		
+		String loopConditionkey = FlowElementUtil.getAttrValue(esp, "loopConditionkey");
+		if (StringUtils.isNotEmpty(loopConditionkey)) {
+			loopConditionTextkey.setText(loopConditionkey);
+		}
+		
 	}
 
 }

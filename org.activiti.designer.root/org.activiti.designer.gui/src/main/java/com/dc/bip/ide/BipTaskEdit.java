@@ -49,9 +49,6 @@ public class BipTaskEdit {
 		} else if (object instanceof EventSubProcess) {
 			LoopDialog editDialog = new LoopDialog(shell, object);
 			editDialog.open();
-		} else if (object instanceof EventSubProcess) {
-			LoopDialog editDialog = new LoopDialog(shell, object);
-			editDialog.open();
 		} else if (object instanceof SequenceFlow) {
 			SequenceFlow flow = (SequenceFlow) object;
 			// BpmnMemoryModel model =
@@ -65,7 +62,7 @@ public class BipTaskEdit {
 				CommonDialog dialog = new CommonDialog(shell, object);
 				dialog.open();
 			}
-		}else if(object instanceof Pool){
+		} else if(object instanceof Pool){
 			PoolDialog poolDialog = new PoolDialog(shell, object);
 			poolDialog.open();
 		} else {

@@ -175,8 +175,10 @@ public class FlowConvertAction implements IObjectActionDelegate {
 			List<Element> seqFlows = getSequenceFlows(startEventId);
 			for (Element seqFlow : seqFlows) {
 				String targetRef = seqFlow.attributeValue("targetRef");
+//				System.out.println(seqFlow.asXML());
 				if (StringUtils.isNotEmpty(targetRef)) {
 					Element firstElement = getElementById(targetRef);
+//					System.out.println("====>"+firstElement.asXML());
 					if (firstElement != null) {
 						// 添加主流程
 						Element mainElement = targetRoot.addElement("processDefinition");
@@ -339,22 +341,24 @@ public class FlowConvertAction implements IObjectActionDelegate {
 
 	public void fillTargetContent(Element xmlParent, Element flowElement) {
 		Element element = getElementById(flowElement.attributeValue("targetRef"));
-
 		if (element != null) {
 			Element parent = element.getParent();
-			Element targetElement = null;
-			if ("serviceTask".equalsIgnoreCase(element.getName())) {
-				String extensionId = element.attributeValue("extensionId");
+			if ("serviceTask".equals(element.getName())) {
 				processServiceTask(element, flowElement, xmlParent);
 			}
-			if (parent != null && "subProcess".equals(parent.getName())
-					&& "true".equals(parent.attributeValue("triggeredByEvent"))) {// 判断是否loop中元素
+			if (parent != null && "process".equals(parent.getName())
+					&& "true".equals(element.attributeValue("triggeredByEvent"))) {// 判断是否loop中元素
 				// 判断loop元素是否已存在
 				Element xmlLoop = xmlParent.element("loop");
 				if (!"case".equals(xmlParent.getName())) {// case节点对比bpmn降级
 					if (xmlLoop == null || parent.attributeValue("id").equals(xmlLoop.attributeValue("id"))) {
 						Element loopElement = xmlParent.addElement("loop");
-						fillLoopAttr(loopElement, parent);
+						fillLoopAttr(loopElement, element);
+						List<Element> eleServiceTasks = element.elements();
+						for(Element eleServiceTask:eleServiceTasks){
+							if("serviceTask".equals((eleServiceTask.getName())))
+							   processServiceTask(eleServiceTask, flowElement, loopElement);
+						}
 						xmlParent = loopElement;
 					}
 				}
@@ -425,14 +429,14 @@ public class FlowConvertAction implements IObjectActionDelegate {
 	 * @param bpmnElement
 	 */
 	public void fillLoopAttr(Element xmlElement, Element bpmnElement) {
-		String id = bpmnElement.attributeValue("id");
-		xmlElement.addAttribute("id", id);
+//		String id = bpmnElement.attributeValue("id");
+//		xmlElement.addAttribute("id", id);
 		if (bpmnElement.element("extensionElements") != null) {
 			List<Element> elements = bpmnElement.element("extensionElements").elements();
-			if (elements != null && elements.size() == 3) {
-				String set = elements.get(0).getText();
+			if (elements != null && elements.size() == 4) {
+				String set = elements.get(1).getText();
 				xmlElement.addAttribute("set", set);
-				String key = elements.get(1).getText();
+				String key = elements.get(3).getText();
 				xmlElement.addAttribute("key", key);
 				String type = elements.get(2).getText();
 				xmlElement.addAttribute("type", type);
